@@ -40,7 +40,7 @@ resource "aws_instance" "nodejs_webapp" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/minikube.sh",
-      "/tmp/minikube.sh"
+      "sudo /tmp/minikube.sh"
       #"kubectl apply -f /tmp/kube_workloads.yaml"#
     ]
   }
