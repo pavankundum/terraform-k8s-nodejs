@@ -17,6 +17,8 @@ spec:
       containers:
       - image: 354994505809.dkr.ecr.ap-south-1.amazonaws.com/nodejs-test:latest
         name: nodejs-webapp
+        ports:
+        - containerPort: 3000
         resources: {}
 status: {}
 
