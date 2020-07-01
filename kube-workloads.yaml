@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nodejs-webapp
+  name: nodejs-webapp
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: nodejs-webapp
+  template:
+    metadata:
+      labels:
+        app: nodejs-webapp
+    spec:
+      containers:
+      - image: 354994505809.dkr.ecr.ap-south-1.amazonaws.com/nodejs-test:latest
+        name: nodejs-webapp
+        resources: {}
+status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nodejs-webapp
+  name: nodejs-service
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+    nodePort: 30030
+  selector:
+    app: nodejs-webapp
+  type: NodePort
+status:
+  loadBalancer: {}
+
